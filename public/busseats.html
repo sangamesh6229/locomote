@@ -1,0 +1,304 @@
+<html><head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+ 
+
+<!-- <script src="myscripts.js"></script> -->
+<script>
+
+$(document).ready(function(){
+if($(".seat-nums").text().length==0)
+{
+$(".seat-selection").hide();
+}
+else
+{
+$(".seat-selection").show()
+}
+$('.pick-checkbox').prop('checked', false);
+ $(".pick-checkbox").click(function(){
+
+ if($(this).is(":checked"))
+ {
+    if($(".seat-nums span").length>=1)
+    $(".seat-nums").append(", ");   
+    $(".seat-nums").append("<span class='"+$(this).val()+"'>"+$(this).val()+"</span>");
+ }
+else
+{
+    $("."+$(this).val()).remove();
+}
+if($(".seat-nums").text().length==0)
+{
+$(".seat-selection").hide();
+}
+else
+{
+$(".seat-selection").show()
+}
+
+ }); 
+});
+</script>
+<style>
+
+<!-- .container{
+position:fixed;
+} -->
+.seat-selection {
+    color: #4f6e49;
+    font-size: 20px;
+    margin: -2px 5px 4px;
+    max-width: 350px;
+}
+.pick-checkbox + label, .pick-checkbox + label {
+        background: #fff;
+    border: 1px solid #bfe1ef;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px !important;
+    height: 30px;
+    line-height: 30px;
+    padding: 8px 9px 8px 8px;
+    position: relative;
+    text-align: center;
+    width: 20px;
+    
+}
+.pick-checkbox
+{
+    display:none;
+}
+.pick-checkbox:checked + label::after {
+    color: #99a1a7;
+    content: " ";
+    font-size: 14px;
+    left: 3px;
+    position: absolute;
+    top: 0;
+}
+.pick-checkbox:checked + label {
+    background-color: #1c96c2;
+    color: #fff;
+}
+
+.clearfix::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+html .clearfix {
+    display: block;
+}
+
+.row-set1 {
+    margin: 0 90px 0 0;
+}
+
+.row-set1,.row-set2 {
+    margin-top:20px;
+        float: left;
+}
+.seat-picker {
+     margin: 50px 43%;
+    
+     
+}
+.row {
+    margin-right: -80px;
+    margin-left: -29px;
+}
+
+* {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: border-box;
+    box-sizing: content-box;
+}
+
+</style>
+</head>
+
+<body >
+
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background: -webkit-linear-gradient(left top, lightblue, lightgreen); ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+    
+    
+     <!--  <a href="circusbus.html"><img src="images/circle.png" style="height:7%;width:40%"></a> -->
+    
+    
+    </div>
+    
+    <div class="container">
+      <div class="collapse navbar-collapse" id="myNavbar">
+       <ul class="nav navbar-nav navbar-right">
+          <li ><a href="index.html" style="color:darkblue">Home</a></li>
+         <!-- <li><a href="#" data-toggle="modal" data-target="#feedbackModal">Feedback</a><li>
+      <li> <a href="#" data-toggle="modal" data-target="#myModal">Login/SignUp</a></li>-->
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+
+<div class="seat-picker" id="seat" >
+<div class="row clearfix" >
+<div class="row-set1">
+<input data-role="none" id="check_8" class="pick-checkbox" type="checkbox" name="check" value="1">
+    <label for="check_8">1</label>
+    <input data-role="none" id="check_7" class="pick-checkbox" type="checkbox" name="check" value="2">
+    <label for="check_7">2</label>
+    </div>
+    <div class="row-set2">
+    <input data-role="none" id="check_6" class="pick-checkbox" type="checkbox" name="check" value="3">
+    <label for="check_6">3</label>
+    <input data-role="none" id="check_5" class="pick-checkbox" type="checkbox" name="check" value="4">
+    <label for="check_5">4</label>
+    </div>
+    </div>
+    <div class="row clearfix">
+<div class="row-set1">
+    <input data-role="none" id="check_4" class="pick-checkbox" type="checkbox" name="check" value="5">
+    <label for="check_4">5</label>
+    <input data-role="none" id="check_3" class="pick-checkbox" type="checkbox" name="check" value="6">
+    <label for="check_3">6</label>
+        </div>
+    <div class="row-set2">
+    <input data-role="none" id="check_2" class="pick-checkbox" type="checkbox" name="check" value="7">
+    <label for="check_2">7</label>
+    <input data-role="none" id="check_1" class="pick-checkbox" type="checkbox" name="check" value="8">
+    <label for="check_1">8</label>
+        </div>
+    </div>
+        <div class="row clearfix">
+<div class="row-set1">
+<input data-role="none" id="check_9" class="pick-checkbox" type="checkbox" name="check" value="9">
+    <label for="check_9">9</label>
+    <input data-role="none" id="check_10" class="pick-checkbox" type="checkbox" name="check" value="10">
+    <label for="check_10">10</label>
+            </div>
+    <div class="row-set2">
+    <input data-role="none" id="check_11" class="pick-checkbox" type="checkbox" name="check" value="11">
+    <label for="check_11">11</label>
+    <input data-role="none" id="check_12" class="pick-checkbox" type="checkbox" name="check" value="12">
+    <label for="check_12">12</label>
+            </div>
+    </div>
+        <div class="row clearfix">
+<div class="row-set1">
+    <input data-role="none" id="check_13" class="pick-checkbox" type="checkbox" name="check" value="13">
+    <label for="check_13">13</label>
+    <input data-role="none" id="check_14" class="pick-checkbox" type="checkbox" name="check" value="14">
+    <label for="check_14">14</label>
+                </div>
+    <div class="row-set2">
+    <input data-role="none" id="check_15" class="pick-checkbox" type="checkbox" name="check" value="15">
+    <label for="check_15">15</label>
+    <input data-role="none" id="check_16" class="pick-checkbox" type="checkbox" name="check" value="16">
+    <label for="check_16">16</label>
+                </div>
+    </div>
+        <div class="row clearfix">
+<div class="row-set1">
+<input data-role="none" id="check_24" class="pick-checkbox" type="checkbox" name="check" value="17">
+    <label for="check_24">17</label>
+    <input data-role="none" id="check_23" class="pick-checkbox" type="checkbox" name="check" value="18">
+    <label for="check_23">18</label>
+                    </div>
+    <div class="row-set2">
+    <input data-role="none" id="check_22" class="pick-checkbox" type="checkbox" name="check" value="19">
+    <label for="check_22">19</label>
+    <input data-role="none" id="check_21" class="pick-checkbox" type="checkbox" name="check" value="20">
+    <label for="check_21">20</label>
+                    </div>
+    </div>
+        <div class="row clearfix">
+<div class="row-set1">
+    <input data-role="none" id="check_20" class="pick-checkbox" type="checkbox" name="check" value="21">
+    <label for="check_20">21</label>
+    <input data-role="none" id="check_19" class="pick-checkbox" type="checkbox" name="check" value="22">
+    <label for="check_19">22</label>
+                        </div>
+    <div class="row-set2">
+    <input data-role="none" id="check_18" class="pick-checkbox" type="checkbox" name="check" value="23">
+    <label for="check_18">23</label>
+    <input data-role="none" id="check_17" class="pick-checkbox" type="checkbox" name="check" value="24">
+    <label for="check_17">24</label>
+                    </div>
+    </div>
+        <div class="row clearfix">
+<div class="row-set1">
+<input data-role="none" id="check_25" class="pick-checkbox" type="checkbox" name="check" value="25">
+    <label for="check_25">25</label>
+    <input data-role="none" id="check_26" class="pick-checkbox" type="checkbox" name="check" value="26">
+    <label for="check_26">26</label>
+                            </div>
+    <div class="row-set2">
+    <input data-role="none" id="check_27" class="pick-checkbox" type="checkbox" name="check" value="27">
+    <label for="check_27">27</label>
+    <input data-role="none" id="check_28" class="pick-checkbox" type="checkbox" name="check" value="28">
+    <label for="check_28">28</label>
+                        </div>
+    </div>
+        <div class="row clearfix">
+<div class="row-set3">
+    <input data-role="none" id="check_29" class="pick-checkbox" type="checkbox" name="check" value="29">
+    <label for="check_29">29</label>
+    <input data-role="none" id="check_30" class="pick-checkbox" type="checkbox" name="check" value="30">
+    <label for="check_30">30</label>
+    <input data-role="none" id="check_31" class="pick-checkbox" type="checkbox" name="check" value="31">
+    <label for="check_31">31</label>
+    <input data-role="none" id="check_32" class="pick-checkbox" type="checkbox" name="check" value="32">
+    <label for="check_32">32</label>
+     <input data-role="none" id="check_33" class="pick-checkbox" type="checkbox" name="check" value="33">
+    <label for="check_33">33</label>
+    <input data-role="none" id="check_34" class="pick-checkbox" type="checkbox" name="check" value="34">
+    <label for="check_34">34</label>
+  
+   
+                        
+</div>
+</div>
+
+<div class="seat-selection">You have selected <span class="seat-nums"></span> seat(s).</div>
+</div>
+
+
+</div>
+
+<!-- <button class="btn btn-danger">
+<a href="circusbus.html">Cancel</a>
+</button -->>
+<!--<script>
+$(document).ready(function(){
+$("#seat").hide();
+$("#btn").click(function(){
+$("#seat").show();
+})
+});
+</script>-->
+
+
+
+
+</body></html>

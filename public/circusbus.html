@@ -1,0 +1,346 @@
+
+<html ng-app="myApp">
+<head>
+
+<style>
+  body {
+      position: relative;
+  }
+  
+  #trandiv {
+    position:fixed;
+    width:100%;
+    top:0;
+    background-color:"";
+}
+
+
+  </style>
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="./controller.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script>
+if(typeof jQuery!=='undefined'){
+    console.log('jQuery Loaded');
+}
+else{
+    console.log('not loaded yet');
+}
+
+$(document).ready(function(){
+
+$('#fromcity').keypress(function() {
+
+$('#fromhide').show();
+$('#tohide').hide();
+});
+
+$('#tocity').keypress(function() {
+$('#fromhide').hide();
+$('#tohide').show();
+});
+$('#datee').click(function(){
+  $('#tohide').hide();
+})
+});
+
+</script>
+
+</head>
+
+
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background: -webkit-linear-gradient(left top, lightblue, lightgreen); ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+    
+    
+      <a href="circusbus.html"><img src="images/circle.png" style="height:7%;width:40%"></a>
+    
+    
+    </div>
+    <div class="container">
+      <div class="collapse navbar-collapse" id="myNavbar">
+       <ul class="nav navbar-nav navbar-right">
+          <li ><a href="index.html" style="color:darkblue">Home</a></li>
+         <!-- <li><a href="#" data-toggle="modal" data-target="#feedbackModal">Feedback</a><li>
+      <li> <a href="#" data-toggle="modal" data-target="#myModal">Login/SignUp</a></li>-->
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+ 
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="align:center;width:85%;border:#efc770;background-color:lavender">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3>Login to Your Account</h3><br>
+        </div>
+        <div class="modal-body">
+      <form>
+      <div class="form-group">
+    
+                      <input type="text" class="form-control" id="name" placeholder="Username" required>
+                  </div>
+                  <div class="form-group">
+    
+                       <input type="text" class="form-control" id="pwd" placeholder="Password" required>
+                  </div>
+     <input type="submit" name="login" class="btn btn-success" value="Login">
+   <a href="#" data-toggle="modal" data-target="#register">Register</a>
+      </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div><div class="container">
+   <!-- Modal -->
+  <div class="modal fade" id="register" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="align:center;width:90%;height:85%;background-color:lavender;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h1 class="border-line font18 roboto-medium">Register</h1>
+        </div>
+        <div class="modal-body" style="align:center">
+    <form class="form-horizontal">
+            <fieldset>
+            <!-- Sign Up Form -->
+            <!-- Text input-->
+            <div class="control-group">
+              <label class="control-label" for="Email">Email:</label>
+              <div class="controls">
+                <input id="Email" name="Email" class="form-control" type="text" placeholder="Email" class="input-large" required="">
+              </div>
+            </div>
+            
+            <!-- Text input-->
+            <div class="control-group">
+              <label class="control-label" for="userid">UserName:</label>
+              <div class="controls">
+                <input id="userid" name="userid" class="form-control" type="text" placeholder="UserName" class="input-large" required="">
+              </div>
+            </div>
+            
+            <!-- Password input-->
+            <div class="control-group">
+              <label class="control-label" for="password">Password:</label>
+              <div class="controls">
+                <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">
+                <em>1-8 Characters</em>
+              </div>
+            </div>
+            
+            <!-- Text input-->
+            <div class="control-group">
+              <label class="control-label" for="reenterpassword">Re-Enter Password:</label>
+              <div class="controls">
+                <input id="reenterpassword" class="form-control" name="reenterpassword" type="password" placeholder="********" class="input-large" required="">
+              </div>
+            </div>
+            
+            <!-- Multiple Radios (inline) -->
+            <br>
+            <!-- Button -->
+            <div class="control-group">
+              <label class="control-label" for="confirmsignup"></label>
+              <div class="controls">
+                <button id="confirmsignup" name="confirmsignup" class="btn btn-success">Sign Up</button>
+              </div>
+            </div>
+            </fieldset>
+            </form>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+<div class="container">
+<!-- Modal -->
+  <div class="modal fade" id="feedbackModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="align:center;width:120%;background-color:lavender">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h3>Feedback</h3>
+        </div>
+        <div class="modal-body" style="align:center">
+    <form>
+          <div class="form-group">
+                      <label>Name</label><input id="customerName" class="form-control" name="customerName" type="text" placeholder="Enter Name">
+                  </div>
+                  <div class="form-group">
+                      <label>Email</label><input id="customerEmail"  class="form-control" name="customerEmail" type="text" value="" placeholder="Enter Email">
+                  </div>
+          <div class="form-group">
+                      <label>Mobile</label>
+            <input id="contactNumber" class="form-control" name="contactNumber" maxlength="10" type="text" placeholder="Enter MobileNo">
+                  </div>
+          <div class="form-group">
+              <label>Ticket No</label><input class="form-control" id="ticketNumber"  type="text" placeholder="Enter TicketNo">
+          </div>
+          <div class="form-group">
+          <label for="feedback">Feedback</label>
+          <textarea id="feedback" class="form-control" name="feedback" cols="20" rows="3"></textarea>
+          </div>
+          <input type="submit"  name="feedback" class="btn btn-danger" value="Feedback">
+          </form>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
+<div class="container" ng-controller="myController" style="background-image:url(images/Tour-Bus.jpg);height:100%;width:100%">
+<div class="panel panel-primary" id="trandiv" style="margin:10%;width:85%">
+<div class="row">
+<form class="form-inline text-center" name="myform" >
+
+  <div class="form-group" >
+    <label>From</label>
+    <input type="text" class="form-control" name="from"  ng-model="search.from" id="fromcity" placeholder="Travelling From City" autocomplete="off" required>
+    <span ng-show="myform.from.$error.required && myform.from.$touched" Style="color:red">Enter City</span>
+  </div>
+  
+  <i class="fa fa-arrows-h" style="font-size:30px;"></i>
+  <div class="form-group" >
+    
+    <input type="text" class="form-control" name="to"  ng-model="search.to" id="tocity" placeholder="Travelling To City" autocomplete="off" required>
+    <span ng-show="myform.to.$error.required && myform.to.$touched" Style="color:red">Enter City</span>
+  </div>
+     
+    <div class="form-group"  >
+                
+                    <input type='date' id="datee" class="form-control" placeholder="Journey Date" id='datetimepicker1'/>
+                    
+                
+  </div> 
+   
+  <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#modalbus{{$index}}" ng-click="getBuses(search.from,search.to)" ng-disabled="myform.$invalid">Search Buses</button>
+   
+  </form>
+  <div style="position:fixed;float:left;">
+ <ul style=" list-style-type:none;float:left;margin-left:300px;display:none;color:hotpink" id="fromhide">
+    <li ng-repeat="ccity in citylist | filter:search.from" value={{ccity.city}} ng-click="getCity(ccity.city)"><strong>{{ccity.city}}</strong></li>
+    </ul>
+    </div>
+    <div style="position:fixed;float:left;margin-left: 450px">
+     <ul style=" list-style-type:none;float:left;margin-left: 100px;display: none;color:hotpink;" id="tohide">
+    <li class="toc" ng-repeat="ccity in citylist | filter:search.to" ng-click="gettoCity(ccity.city)"><strong>{{ccity.city}}</strong></li>
+    </ul>
+   </div>
+  
+  </div>
+  
+  </div>
+  
+ <div class="container">
+ 
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalbus{{$index}}" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content"  style="align:center;height:100%;width:100%;border:#efc770;background-color:lavender">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3>Bus Details</h3><br>
+        </div>
+        <div class="modal-body">
+     
+    <table  class="table">
+<tr><th>Name</th>
+<th>seats</th>
+<th>departure</th>
+<th>arrival</th>
+<th>Price</th>
+<th>Book</th>
+</tr>
+<tr ng-repeat="items in (list=(buslists|filter:{departure: search.from, arrival:search.to }))"  >
+
+<td>{{items.travelName}}
+</span></td>
+<td>{{items.seats}}</td>
+<td>{{items.departure}}</td>
+<td>{{items.arrival}}</td>
+<td>{{items.price|currency}}</td>
+<td><button class="btn btn-success"><a href="busseats.html">Book</a></button></td>
+
+</tr>
+<tr align="center"><td  style="color:red">{{errmsg}}</td></tr>
+</table> 
+
+      
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="navbar-fixed-bottom" style="background-color:lavender;height:5%">
+<div class="col-md-2 col-sm-3">
+<p class="ico14 fb">Follow Us</p>
+<div class="padT10">
+<a target="_blank" href="http://www.facebook.com/goibibo" class="fl padR10" title="facebook"><i class="ico24 lh1-2  greyLt icon-facebook"></i></a>
+<a target="_blank" href="http://twitter.com/goibibo" class="fl padR10" title="Twitter"><i class="ico26 lh1-2  greyLt icon-twitter"></i></a>
+<a target="_blank" href="http://www.youtube.com/user/goibibo" class="fl padR10" title="youtube"><i class="ico28 greyLt icon-youtube"></i></a>
+<a target="_blank" href="https://plus.google.com/+goibibo/" class="fl" title="Google Plus"><span class="hd_vs fr_gplus margin0">&nbsp;</span></a>
+</div>
+</div>
+      <div class="container text-center">
+        <p class="text-muted" style="padding-bottom:6%"><strong>copyright@circusbus.com</strong></p>
+      </div>
+</footer>
+ 
+    
+</body>
+</html>

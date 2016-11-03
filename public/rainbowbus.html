@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+<style>
+
+</style>
+  <title>Rainbow Bus</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="./controller.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script>
+if(typeof jQuery!=='undefined'){
+    console.log('jQuery Loaded');
+}
+else{
+    console.log('not loaded yet');
+}
+
+$(document).ready(function(){
+
+$('#fromcity').keypress(function() {
+
+$('#fromhide').show();
+$('#tohide').hide();
+});
+
+$('#tocity').keypress(function() {
+$('#fromhide').hide();
+$('#tohide').show();
+});
+$('#datee').click(function(){
+  $('#tohide').hide();
+})
+});
+
+</script>
+</head>
+
+<body ng-controller="myController">
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background: -webkit-linear-gradient(left top, #34e5b3, #58ade2); ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a href="rainbowbus.html"><img src="images/rainbowlogo.gif" style="height:10%; width:50%"></img></a>
+    </div>
+    <div class="container">
+      <div class="collapse navbar-collapse" id="myNavbar">
+       <ul class="nav navbar-nav navbar-right">
+          <li ><a href="index.html" style="color:lime">Home</a></li>
+          <!-- <li><a href="#" data-toggle="modal" data-target="#feedbackModal">Feedback</a><li> -->
+		 <!--  <li> <a href="#" data-toggle="modal" data-target="#myModal">Login/SignUp</a></li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container" style="background-image:url(images/busss.jpg);-o-object-fit:contain;overflow:hidden;position:absolute;height:850px;width:100%;margin-top:3%;background-repeat:no-repeat">
+<div class="col-md-4 col-md-push-8 scolleft  formheight TabbedPanelsContentGroup" style="padding: 10px 30px 20px 30px;height:350px;margin-top: 30px">
+<!--<marquee behavior="scroll" direction="right" scrollamount="30">
+<img src="bus.png" style="height:30%; width:30%"></img>
+</marquee> -->
+
+						<div><h4 style="margin-top:5px;margin-bottom:5px;">Online Bus Booking</h4></div>
+						
+						<form name="myform">
+						<div class="row">
+							<div class="w90percent">
+								<div class="wh90percent textleft">
+									<span>From</span>
+									
+									<input type="text"  class="form-control" name="from" ng-model="search.from"placeholder="Source" id="fromcity" autocomplete="off" required>
+                  <span ng-show="myform.from.$error.required && myform.from.$touched" Style="color:red">Enter City</span>
+							<ul style=" list-style-type:none;display:none;color:hotpink" id="fromhide">
+    <li  ng-repeat="ccity in citylist | filter:search.from" ng-click="getCity(ccity.city)"><strong>{{ccity.city}}</strong></li>
+    </ul>
+								</div>
+							</div>
+							<div class="w90percent">
+								<div class="wh90percent textleft">
+									<span>To</span>
+									<input type="text" class="form-control" name="to" ng-model="search.to" placeholder="Destination" id="tocity" autocomplete="off" required>
+                  <span ng-show="myform.to.$error.required && myform.to.$touched" Style="color:red">Enter City</span>
+									<ul style=" list-style-type:none;display:none;color:hotpink" id="tohide">
+    <li  ng-repeat="ccity in citylist | filter:search.to" ng-click="gettoCity(ccity.city)"><strong>{{ccity.city}}</strong></li>
+    </ul>
+								</div>
+							</div>
+							<div class="clearfix pbottom15"></div>
+						
+							<!-- <div class="clearfix pbottom15"></div> -->
+                            <div class="w90percent">
+								<div class="wh90percent textleft">
+									<span class="opensans size13">Date</span>		
+								<div class="form-group" >
+                
+										<input type='date' id="datee" class="form-control" placeholder="Journey Date" id='datetimepicker1'/>
+								</div> 
+								</div>
+							</div>
+						</div>
+					</form>
+						<div class="clearfix"></div>
+						<div class="searchBtn">
+						<button type="button" class="btn-search3 btn-responsive" style="background: #FB6017;border-color: rgb(253, 100, 67);width: 76%;margin-top: 23px;" data-toggle="modal" data-target="#modalbus" ng-click="getBuses(search.from,search.to)">Search</button>
+						</div>
+						<!-- END OF MULTIPLE DESTINATIONS TAB -->	
+						<div class="clearfix"></div>
+						</div>
+						
+   <div class="container">
+ 
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalbus{{$index}}" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content"  style="align:center;height:100%;width:100%;border:#efc770;background-color:lavender">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3>Bus Details</h3><br>
+        </div>
+        <div class="modal-body">
+     
+    <table  class="table">
+<tr><th>Name</th>
+<th>seats</th>
+<th>departure</th>
+<th>arrival</th>
+<th>Price</th>
+<th>Book</th>
+</tr>
+<tr ng-repeat="items in (list=(buslists|filter:{departure: search.from, arrival:search.to }))">
+<td>{{items.travelName}}
+</span></td>
+<td>{{items.seats}}</td>
+<td>{{items.departure}}</td>
+<td>{{items.arrival}}</td>
+<td>{{items.price|currency}}</td>
+<td><button class="btn btn-success"><a href="busseats.html">Book</a></button></td>
+
+</tr>
+<tr align="center"><td  style="color:red">{{errmsg}}</td></tr>
+
+</table> 
+      
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</div>
+<footer class="navbar-fixed-bottom" style="background-color:lavender;height:5%">
+<div class="col-md-2 col-sm-3">
+<p class="ico14 fb">Follow Us</p>
+<div class="padT10">
+<a target="_blank" href="http://www.facebook.com/goibibo" class="fl padR10" title="facebook"><i class="ico24 lh1-2  greyLt icon-facebook"></i></a>
+<a target="_blank" href="http://twitter.com/goibibo" class="fl padR10" title="Twitter"><i class="ico26 lh1-2  greyLt icon-twitter"></i></a>
+<a target="_blank" href="http://www.youtube.com/user/goibibo" class="fl padR10" title="youtube"><i class="ico28 greyLt icon-youtube"></i></a>
+<a target="_blank" href="https://plus.google.com/+goibibo/" class="fl" title="Google Plus"><span class="hd_vs fr_gplus margin0">&nbsp;</span></a>
+</div>
+</div>
+      <div class="container text-center">
+        <p class="text-muted" style="padding-bottom:6%"><strong>copyright@circusbus.com</strong></p>
+      </div>
+</footer>
+</body>
+</html>
+
